@@ -20,7 +20,7 @@ public class AutorBeans {
 
 
 	public void gravar() {
-		System.out.println("Gravou com sucesso"+ this.autor.getNome());
+		System.out.println("Gravou com sucesso "+ this.autor.getNome());
 		autorDAO.inserir(autor);
 		this.autor = new Autor();
 	}

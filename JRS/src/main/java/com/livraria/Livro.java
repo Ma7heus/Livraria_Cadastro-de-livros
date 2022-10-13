@@ -91,4 +91,10 @@ public class Livro {
 	public void setDatalancamento(String datalancamento) {
 		this.datalancamento = datalancamento;
 	}
+
+
+	public void addAutor(Autor autor) {
+		this.autores.add(autor);
+		
+	}
 }
