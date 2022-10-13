@@ -65,40 +65,49 @@
 
 			</fieldset>
 			<h:commandButton value="Gravar" action="#{livroBean.gravar}">
-				<f:ajax execute="@form" render="@form :tabelaLivros" />
+				<f:ajax execute="@form"
+					render="@form :formTabelaLivros:tabelaLivros" />
 			</h:commandButton>
 		</h:form>
 
+		<h:form id="formTabelaLivros">
+			<fieldset>
+				<h:dataTable id="tabelaLivros" value="#{livroBean.livros}"
+					var="livro">
 
-		<fieldset>
-			<h:dataTable id="tabelaLivros" value="#{livroBean.livros}"
-				var="livro">
+					<h:column>
+						<f:facet name="header">Titulo</f:facet>
+						<h:outputText value="#{livro.titulo}" />
+					</h:column>
 
-				<h:column>
-					<f:facet name="header">Titulo</f:facet>
-					<h:outputText value="#{livro.titulo}" />
-				</h:column>
+					<h:column>
+						<f:facet name="header">ISBN</f:facet>
+						<h:outputText value="#{livro.isbn}" />
+					</h:column>
 
-				<h:column>
-					<f:facet name="header">ISBN</f:facet>
-					<h:outputText value="#{livro.isbn}" />
-				</h:column>
+					<h:column>
+						<f:facet name="header">Preço</f:facet>
+						<h:outputText value="#{livro.preco}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Data</f:facet>
+						<h:outputText value="" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Alterar</f:facet>
+						<h:commandLink value="alterar"
+							action="#{livroBean.alterar(livro)}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Remover</f:facet>
+						<h:commandLink value="remover"
+							action="#{livroBean.remover(livro)}" />
+					</h:column>
 
-				<h:column>
-					<f:facet name="header">Preço</f:facet>
-					<h:outputText value="#{livro.preco}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">Data</f:facet>
-					<h:outputText value="" />
-				</h:column>
+				</h:dataTable>
 
-
-
-			</h:dataTable>
-
-		</fieldset>
-
+			</fieldset>
+		</h:form>
 
 
 

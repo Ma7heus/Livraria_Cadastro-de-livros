@@ -1,6 +1,7 @@
 package com.livraria;
 
 import java.util.List;
+import java.util.Objects;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -36,6 +37,10 @@ public class LivroBean {
 		return this.livro.getAutores();
 	}
 	
+	public List<Livro> getLivros() {
+		return livroDAO.buscarTodos();
+	}
+	
 	public void gravarAutor() {
 		Autor autor = autorDAO.buscarPorId(this.autorID);		
 		livro.addAutor(autor);
@@ -46,14 +51,35 @@ public class LivroBean {
 		System.out.println("Gravou com sucesso"+ this.livro.getTitulo());
 		if (this.livro.getAutores().isEmpty()) {
 			FacesContext.getCurrentInstance().addMessage("autor", new FacesMessage("É necessario informar um autor para o livro!"));
-		}		
+		}
+		Livro livro = livroDAO.buscarPorId(this.livro.getIdLivro());
+		if (Objects.isNull(livro.getIdLivro())) {
+			livroDAO.inserir(this.livro);
+		}else{
+			livroDAO.update(this.livro);
+		}
+		
+		
 		livroDAO.inserir(livro);
 		this.livro = new Livro();
 	}
-
-	public List<Livro> getLivros() {
-		return livroDAO.buscarTodos();
+	
+	
+	public void remover(Livro livro) {
+		System.out.println("Removendo livro!");
+		livroDAO.delete(livro.getIdLivro());
 	}
+	
+	
+	public void alterar(Livro livro) {
+		System.out.println("Atualizando livro");
+		this.livro = livro;
+	}
+	
+	
+	
+
+	
 	
 	public Long getAutorID() {
 		return autorID;
@@ -75,6 +101,9 @@ public class LivroBean {
 		System.out.println("Chamando o formulario do autor!");
 		return "autor?faces-redirect=true";
 	}
+	
+	
+	
 	
 	
 	
