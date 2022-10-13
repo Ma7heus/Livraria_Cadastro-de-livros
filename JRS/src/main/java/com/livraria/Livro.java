@@ -2,6 +2,7 @@ package com.livraria;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -13,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Livro {
@@ -29,9 +32,9 @@ public class Livro {
 	
 	@Column (precision = 18, scale = 2)
 	private BigDecimal preco;
-	
-	private String datalancamento;
-	
+	@Temporal(TemporalType.DATE)
+	private Calendar datalancamento = Calendar.getInstance();
+
 	@ManyToMany
 	@JoinTable(name = "livro_autores", joinColumns = @JoinColumn(name = "livro_id"), inverseJoinColumns = @JoinColumn (name = "autor_id"))
 	private List<Autor> autores = new ArrayList<>();
@@ -84,17 +87,17 @@ public class Livro {
 		this.preco = preco;
 	}
 
-	public String getDatalancamento() {
-		return datalancamento;
-	}
-
-	public void setDatalancamento(String datalancamento) {
-		this.datalancamento = datalancamento;
-	}
-
 
 	public void addAutor(Autor autor) {
 		this.autores.add(autor);
 		
+	}
+	
+	public Calendar getDatalancamento() {
+		return datalancamento;
+	}
+
+	public void setDatalancamento(Calendar datalancamento) {
+		this.datalancamento = datalancamento;
 	}
 }
