@@ -12,6 +12,7 @@ import javax.inject.Inject;
 import com.livraria.Usuario;
 import com.livraria.DAO.UsuarioDAO;
 
+@SuppressWarnings("deprecation")
 @ManagedBean
 @ViewScoped
 public class LoginBean {
@@ -24,6 +25,10 @@ public class LoginBean {
 	public String logar() {
 		System.out.println("Fazendo login do usuario " + this.usuario.getEmail());
 		if (autenticaUsuario()) {
+			//gravar informação de usuario autenticado  = true
+			FacesContext context = FacesContext.getCurrentInstance();
+			context.getExternalContext().getSessionMap().put("usuarioLogado", this.usuario);
+			
 			return "livro?faces-redirect=true";
 		}
 

@@ -11,6 +11,7 @@
 
 	<lifecycle>
 		<phase-listener>com.livraria.util.LogPhaseListener</phase-listener>
+		<phase-listener>com.livraria.util.Autorizador</phase-listener>
 	</lifecycle>
 
 
