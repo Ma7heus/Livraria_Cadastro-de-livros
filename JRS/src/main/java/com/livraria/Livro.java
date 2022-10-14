@@ -101,4 +101,9 @@ public class Livro {
 	public void setDatalancamento(Calendar datalancamento) {
 		this.datalancamento = datalancamento;
 	}
+
+
+	public void removeAutor(Autor autor) {
+		this.autores.remove(autor);
+	}
 }

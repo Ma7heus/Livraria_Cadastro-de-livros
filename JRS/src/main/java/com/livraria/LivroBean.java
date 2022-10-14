@@ -48,37 +48,35 @@ public class LivroBean {
 	}
 	
 	public void gravar() {
-		System.out.println("Gravou com sucesso"+ this.livro.getTitulo());
+		System.out.println("Gravou com sucesso "+ this.livro.getTitulo());
 		if (this.livro.getAutores().isEmpty()) {
 			FacesContext.getCurrentInstance().addMessage("autor", new FacesMessage("É necessario informar um autor para o livro!"));
 		}
 		
 		if (Objects.isNull(this.livro.getIdLivro())) {
 			livroDAO.inserir(this.livro);
+			FacesContext.getCurrentInstance().addMessage("livro", new FacesMessage("Livro cadastrado com sucesso!"));
 		}else{
-			//Livro livro = livroDAO.buscarPorId(this.livro.getIdLivro());
 			livroDAO.update(this.livro);
-		}
-		
+			FacesContext.getCurrentInstance().addMessage("livro", new FacesMessage("Livro alterado com sucesso!"));
+		}		
 		this.livro = new Livro();
 	}
 	
 	
+	public void removerAutorDolivro(Autor autor) {
+		this.livro.removeAutor(autor);
+	}	
+	
 	public void remover(Livro livro) {
 		System.out.println("Removendo livro!");
 		livroDAO.delete(livro.getIdLivro());
-	}
-	
+	}	
 	
 	public void alterar(Livro livro) {
 		System.out.println("Atualizando livro");
 		this.livro = livro;
-	}
-	
-	
-	
-
-	
+	}	
 	
 	public Long getAutorID() {
 		return autorID;
