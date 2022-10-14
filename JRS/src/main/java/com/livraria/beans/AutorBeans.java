@@ -22,6 +22,7 @@ public class AutorBeans {
 
 	private Autor autor = new Autor();
 	private Long autorId;
+	
 
 	public Autor getAutor() {
 		return autor;
@@ -69,5 +70,5 @@ public class AutorBeans {
 	public void setAutorId(Long autorId) {
 		this.autorId = autorId;
 	}
-	
+
 }

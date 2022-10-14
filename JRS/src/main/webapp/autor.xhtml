@@ -9,7 +9,8 @@
 
 	<f:metadata>
 		<f:viewParam name="autorId" value="#{autorBeans.autorId}" />
-		<f:viewAction action="#{autorBeans.carregaAutorPeloId}" if="#{param.autorId != null}" />
+		<f:viewAction action="#{autorBeans.carregaAutorPeloId}"
+			if="#{param.autorId != null}" />
 	</f:metadata>
 
 	<ui:define name="titulo">
@@ -21,6 +22,7 @@
 			<fieldset>
 				<legend>Dados do Autor</legend>
 				<h:panelGrid columns="2">
+
 					<h:outputLabel value="Nome:" for="nome" />
 					<h:inputText id="nome" value="#{autorBeans.autor.nome}"
 						required="true"
@@ -28,6 +30,15 @@
 						validatorMessage="Nome do autor não pode ser superior a 50 caracteres!">
 						<f:validateLength maximum="50" />
 					</h:inputText>
+
+					<h:outputText value="Email" for="email" />
+					<h:inputText id="email" value="#{autorBeans.autor.email}"
+						required="true" requiredMessage="É necessario informar um email!">
+						<f:passThroughAttribute name="type" value="email"></f:passThroughAttribute>
+					</h:inputText>
+
+
+
 					<h:commandButton value="Gravar" action="#{autorBeans.gravar}" />
 				</h:panelGrid>
 			</fieldset>

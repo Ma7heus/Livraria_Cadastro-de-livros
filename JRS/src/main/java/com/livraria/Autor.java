@@ -19,6 +19,7 @@ public class Autor {
 	private Long idAutor;
 	
 	private String nome;
+	private String email;
 	
 	@ManyToMany(mappedBy = "autores")
 	private List<Livro> livros = new ArrayList<>();
@@ -45,6 +46,14 @@ public class Autor {
 
 	public void setLivros(List<Livro> livros) {
 		this.livros = livros;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	
