@@ -80,6 +80,17 @@ public class LoginBean {
 		}
 
 	}
+	
+	
+	public String deslogar() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		context.getExternalContext().getSessionMap().remove("usuarioLogado");		
+		
+		return "login?faces-redirect=true";
+	}
+	
+	
+	
 
 	public Usuario getUsuario() {
 		return usuario;
