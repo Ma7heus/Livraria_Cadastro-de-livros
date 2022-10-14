@@ -1,10 +1,13 @@
 package com.livraria.DAO;
 
 import java.util.List;
+import java.util.Objects;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
+import com.livraria.Usuario;
 
 @Stateless
 public abstract class GenericDAO<T,ID> {
@@ -35,4 +38,8 @@ public abstract class GenericDAO<T,ID> {
 		return entityManager.createQuery( " select entidade from " + clazz.getSimpleName() + " entidade ",
 				clazz).getResultList();
 	}
+	
+	
+	
+	
 }

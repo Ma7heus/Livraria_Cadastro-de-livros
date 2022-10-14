@@ -10,7 +10,6 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 import com.livraria.Autor;
-import com.livraria.Livro;
 import com.livraria.DAO.AutorDAO;
 import com.livraria.util.RedirectView;
 
