@@ -52,15 +52,14 @@ public class LivroBean {
 		if (this.livro.getAutores().isEmpty()) {
 			FacesContext.getCurrentInstance().addMessage("autor", new FacesMessage("É necessario informar um autor para o livro!"));
 		}
-		Livro livro = livroDAO.buscarPorId(this.livro.getIdLivro());
-		if (Objects.isNull(livro.getIdLivro())) {
+		
+		if (Objects.isNull(this.livro.getIdLivro())) {
 			livroDAO.inserir(this.livro);
 		}else{
+			//Livro livro = livroDAO.buscarPorId(this.livro.getIdLivro());
 			livroDAO.update(this.livro);
 		}
 		
-		
-		livroDAO.inserir(livro);
 		this.livro = new Livro();
 	}
 	
