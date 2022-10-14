@@ -21,10 +21,16 @@ public class AutorBeans {
 	AutorDAO autorDAO;
 
 	private Autor autor = new Autor();
+	private Long autorId;
 
 	public Autor getAutor() {
 		return autor;
 	}
+	
+	public void carregaAutorPeloId() {
+		this.autor = autorDAO.buscarPorId(autorId);
+	}
+	
 
 	public RedirectView gravar() {
 		if (this.autor.getNome().isEmpty()) {
@@ -54,6 +60,14 @@ public class AutorBeans {
 
 	public void alterar(Autor autor) {
 		this.autor = autor;
+	}
+
+	public Long getAutorId() {
+		return autorId;
+	}
+
+	public void setAutorId(Long autorId) {
+		this.autorId = autorId;
 	}
 	
 }
