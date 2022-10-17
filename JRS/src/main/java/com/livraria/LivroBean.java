@@ -23,6 +23,7 @@ public class LivroBean {
 	AutorDAO autorDAO;
 
 	private Livro livro = new Livro();
+	private List<Livro> livros;
 	private Long autorID;
 
 	public Livro getLivro() {
@@ -38,7 +39,9 @@ public class LivroBean {
 	}
 	
 	public List<Livro> getLivros() {
-		return livroDAO.buscarTodos();
+		//if (this.livros == null)		
+		this.livros = livroDAO.buscarTodos();
+		return livros;
 	}
 	
 	public void gravarAutor() {
@@ -55,9 +58,11 @@ public class LivroBean {
 		
 		if (Objects.isNull(this.livro.getIdLivro())) {
 			livroDAO.inserir(this.livro);
+			this.livros = livroDAO.buscarTodos();
 			FacesContext.getCurrentInstance().addMessage("livro", new FacesMessage("Livro cadastrado com sucesso!"));
 		}else{
 			livroDAO.update(this.livro);
+			this.livros = livroDAO.buscarTodos();
 			FacesContext.getCurrentInstance().addMessage("livro", new FacesMessage("Livro alterado com sucesso!"));
 		}		
 		this.livro = new Livro();

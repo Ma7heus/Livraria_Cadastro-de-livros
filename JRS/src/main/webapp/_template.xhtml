@@ -13,17 +13,25 @@
 
 <h:body>
 	<div id="cabecalho">
-		<h:graphicImage library="img" name="logo.png" />
 		<h:form rendered="#{usuarioLogado != null}">
-			<p:outputLabel value="  Usuario logado: " />
-			<p:outputLabel value="#{sessionScope['usuarioLogado'].email}" />
-
-			<p:commandButton value="Logout" action="#{loginBean.deslogar}"
-				icon="pi pi-times" styleClass="rounded-button ui-button-danger"
-				style="float:right"></p:commandButton>
-
-
-
+			<h:panelGrid columns="3">
+				<p:graphicImage library="img" name="logo.png" />
+				<p:outputLabel
+					value="Usuario logado: #{sessionScope['usuarioLogado'].email}" />
+			</h:panelGrid>
+			
+			
+			<p:menuButton value="Menu" icon="pi pi-home">
+				<p:menuitem value="Livros" action="livro" icon="pi pi-book" />
+				<p:menuitem value="Autores" action="autor"
+					icon="pi pi-user" />
+				<p:menuitem value="Carousel" action="carousel"
+					icon="pi pi-external-link" />
+				<p:menuitem value="Megamenu" action="megamenu"
+					icon="pi pi-external-link" />
+				<p:menuitem value="Logout" action="#{loginBean.deslogar}"
+					icon="pi pi-times" />
+			</p:menuButton>
 		</h:form>
 
 		<h1>

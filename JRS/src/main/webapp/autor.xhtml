@@ -40,7 +40,7 @@
 
 
 					<p:commandButton value="Gravar" action="#{autorBeans.gravar}"
-						process="@form" update="@form :formTabelaAutores"
+						update="@form :formTabelaAutores"
 						styleClass="ui-button-success" icon="pi pi-check" />
 				</h:panelGrid>
 			</p:fieldset>
@@ -58,22 +58,33 @@
 						<f:facet name="header">Email do autor</f:facet>
 						<p:outputLabel value="#{autor.email}" />
 					</p:column>
+
 					<p:column>
-						<p:commandButton class="ui-button-warning rounded-button"
-							action="#{autorBeans.remover(autor)}" icon="pi pi-trash"
-							update="@form" style="float:right"/>					
-						
-						<p:commandButton icon="pi pi-pencil"
-							action="#{autorBeans.alterar(autor)}" process="@form"
-							update=":formDadosAutores"  style="float:right" />
+						<p:commandButton id="deleteAutor"
+							class="ui-button-warning rounded-button" icon="pi pi-trash"
+							style="float:right" process="@this"
+							oncomplete="PF('deleteProductDialog').show()" />
+
+						<p:commandButton id="alteraAutor" icon="pi pi-pencil"
+							process="@form" update=":formDadosAutores" style="float:right"
+							action="#{autorBeans.alterar(autor)}" />
+							
+
+						<p:confirmDialog widgetVar="deleteProductDialog" showEffect="fade"
+							width="300" message="Delete the autor?" header="Confirm"
+							severity="warn">
+							<p:commandButton value="Yes" icon="pi pi-check"
+								action="#{autorBeans.remover(autor)}" process="@this"
+								update="@form" onclick="PF('deleteProductDialog').hide()" />
+							<p:commandButton value="No" type="button"
+								styleClass="ui-button-secondary" icon="pi pi-times"
+								onclick="PF('deleteProductDialog').hide()" />
+						</p:confirmDialog>
 
 					</p:column>
-
 				</p:dataTable>
 			</p:fieldset>
 		</h:form>
-
-
 	</ui:define>
 </ui:composition>
 
