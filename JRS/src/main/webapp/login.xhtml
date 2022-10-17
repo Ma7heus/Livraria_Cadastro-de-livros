@@ -10,14 +10,13 @@
 
 
 	<ui:define name="titulo">
-		Login
+		<p:outputPanel>Login</p:outputPanel>
 	</ui:define>
 	<ui:define name="conteudo">
-	
-	
+
 		<h:form id="login">
-			<h:messages />
-			<p:fieldset legend="Digite os dados para login">				
+			<p:messages />
+			<p:fieldset legend="Digite os dados para login">
 				<h:panelGrid columns="2">
 
 					<p:outputLabel value="Email:" for="email" />
@@ -26,18 +25,19 @@
 						requiredMessage="É necessario informar o login do usuario!">
 						<f:passThroughAttribute name="type" value="email"></f:passThroughAttribute>
 					</p:inputText>
-					
 
 					<p:outputLabel value="Senha" for="senha" />
-					<h:inputSecret id="senha" value="#{loginBean.usuario.senha}"
-						required="true" requiredMessage="Informe sua senha para efetuar o login!">
+					<p:password id="senha" value="#{loginBean.usuario.senha}"
+						feedback="true" required="true"
+						requiredMessage="Informe sua senha para efetuar o login!">
 						<f:passThroughAttribute name="type" value="password"></f:passThroughAttribute>
-					</h:inputSecret>
+					</p:password>
 
-
-
-					<h:commandButton value="Logar" action="#{loginBean.logar}" />
-					<h:commandButton value="Cadastrar" action="#{loginBean.cadastrar}"  />
+					<p:commandButton value="Logar" action="#{loginBean.logar}"
+						process="@form" update="@form" />
+					<p:commandButton value="Cadastrar" icon="pi pi-check"
+						action="#{loginBean.cadastrar}" styleClass="ui-button-success"
+						process="@form" update="@form" />
 				</h:panelGrid>
 			</p:fieldset>
 		</h:form>

@@ -56,6 +56,7 @@ public class AutorBeans {
 	public void remover(Autor autor) {
 		System.out.println("Removendo autor no banco");
 		autorDAO.delete(autor.getIdAutor());
+		FacesContext.getCurrentInstance().addMessage("autor", new FacesMessage("Autor removido com sucesso!"));
 	}
 
 	public void alterar(Autor autor) {
