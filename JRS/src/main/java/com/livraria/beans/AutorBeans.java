@@ -1,21 +1,22 @@
 package com.livraria.beans;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import com.livraria.Autor;
 import com.livraria.DAO.AutorDAO;
 import com.livraria.util.RedirectView;
 
-@ManagedBean
-@ViewScoped
-public class AutorBeans {
+@Named
+@ViewScoped //javax.faces.view.ViewScoped; - nao confundir
+public class AutorBeans implements Serializable{
 	@Inject
 	AutorDAO autorDAO;
 

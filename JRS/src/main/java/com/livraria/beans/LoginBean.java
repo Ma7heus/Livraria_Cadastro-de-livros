@@ -1,21 +1,20 @@
 package com.livraria.beans;
 
+import java.io.Serializable;
 import java.util.List;
-import java.util.Objects;
 
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import com.livraria.Usuario;
 import com.livraria.DAO.UsuarioDAO;
 
-@SuppressWarnings("deprecation")
-@ManagedBean
+@Named
 @ViewScoped
-public class LoginBean {
+public class LoginBean  implements Serializable{
 	@Inject
 	UsuarioDAO usuarioDAO;
 	private Long usuarioID;

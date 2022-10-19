@@ -19,21 +19,19 @@
 				<p:outputLabel
 					value="Usuario logado: #{sessionScope['usuarioLogado'].email}" />
 			</h:panelGrid>
-			
-			
+
 			<p:menuButton value="Menu" icon="pi pi-home">
 				<p:menuitem value="Livros" action="livro" icon="pi pi-book" />
-				<p:menuitem value="Autores" action="autor"
-					icon="pi pi-user" />
-				<p:menuitem value="Carousel" action="carousel"
-					icon="pi pi-external-link" />
-				<p:menuitem value="Megamenu" action="megamenu"
-					icon="pi pi-external-link" />
+				<p:menuitem value="Autores" action="autor" icon="pi pi-user" />
+				<p:menuitem value="Carousel" action="carousel" />
+				<p:menuitem value="Megamenu" action="megamenu" />
+				<p:menuitem value="Vendas" action="vendas?faces-redirect=true"
+					icon="fa fa-fw fa-bar-chart" />
 				<p:menuitem value="Logout" action="#{loginBean.deslogar}"
 					icon="pi pi-times" />
+
 			</p:menuButton>
 		</h:form>
-
 		<h1>
 			<ui:insert name="titulo"></ui:insert>
 		</h1>

@@ -1,22 +1,23 @@
 package com.livraria;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import com.livraria.DAO.AutorDAO;
 import com.livraria.DAO.LivroDAO;
 
-@ManagedBean
+@Named
 @ViewScoped
-public class LivroBean {
+public class LivroBean implements Serializable{
 	@Inject
 	LivroDAO livroDAO;
 	@Inject 
